@@ -1,0 +1,29 @@
+{
+  "name": "architecture-a-playwright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pw:install": "playwright install",
+    "pw:doctor": "playwright --version",
+    "test": "playwright test",
+    "test:list": "playwright test --list",
+    "test:ui": "playwright test --ui",
+    "test:smoke": "playwright test --config=playwright/runs/smoke.config.ts",
+    "test:regression": "playwright test --config=playwright/runs/regression.config.ts",
+    "test:api": "playwright test --config=playwright/runs/api-only.config.ts",
+    "show:report": "playwright show-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.2.3",
+    "dotenv": "^17.3.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "zod": "^4.3.6"
+  }
+}

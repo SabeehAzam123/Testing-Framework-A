@@ -1,6 +1,16 @@
 import { defineConfig, devices } from '@playwright/test';
+import { defineBddConfig } from 'playwright-bdd';
 import { env } from './playwright/config/env';
 import path from 'path';
+
+const testDir = defineBddConfig({
+  features: 'playwright/e2e/bdd/features/**/*.feature',
+  steps: [
+      'playwright/e2e/bdd/steps/**/*.ts',
+      'playwright/support/bdd.fixtures.ts',
+    ],
+  outputDir: 'playwright/e2e/bdd/generated',
+});
 
 export default defineConfig({
     testDir: path.resolve(__dirname, 'playwright/e2e'),

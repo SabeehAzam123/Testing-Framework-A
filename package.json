@@ -12,7 +12,10 @@
     "test:smoke": "playwright test --config=playwright/runs/smoke.config.ts",
     "test:regression": "playwright test --config=playwright/runs/regression.config.ts",
     "test:api": "playwright test --config=playwright/runs/api-only.config.ts",
-    "show:report": "playwright show-report"
+    "show:report": "playwright show-report",
+    "bdd:gen": "bddgen --config playwright/runs/bdd.playwright.config.ts",
+    "test:bdd": "npm run bdd:gen && playwright test --config=playwright/runs/bdd.playwright.config.ts",
+    "test:bdd:auth": "npm run bdd:gen && playwright test --config=playwright/runs/bdd.playwright.config.ts --grep \"Admin logs in successfully\""
   },
   "keywords": [],
   "author": "",
@@ -22,6 +25,7 @@
     "@playwright/test": "^1.58.2",
     "@types/node": "^25.2.3",
     "dotenv": "^17.3.1",
+    "playwright-bdd": "^8.5.0",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.9.3",

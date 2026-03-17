@@ -11,27 +11,23 @@ export class BaseClient {
         private readonly log: LoggerLike
     ) {}
 
-    async get(path: string, options?: Parameters<APIRequestContext['get']>[1]): Promise<APIResponse> {
+    get(path: string, options?: Parameters<APIRequestContext['get']>[1]): Promise<APIResponse> {
         this.log.info(`HTTP GET ${path}`);
-        const res = await this.api.get(path, options);
-        return res;
+        return this.api.get(path, options);
     }
 
-    async post(path: string, options?: Parameters<APIRequestContext['post']>[1]): Promise<APIResponse> {
+    post(path: string, options?: Parameters<APIRequestContext['post']>[1]): Promise<APIResponse> {
         this.log.info(`HTTP POST ${path}`);
-        const res = await this.api.post(path, options);
-        return res;
+        return this.api.post(path, options);
     }
 
-    async put(path: string, options?: Parameters<APIRequestContext['put']>[1]): Promise<APIResponse> {
+    put(path: string, options?: Parameters<APIRequestContext['put']>[1]): Promise<APIResponse> {
         this.log.info(`HTTP PUT ${path}`);
-        const res = await this.api.put(path, options);
-        return res;
+        return this.api.put(path, options);
     }
 
-    async delete(path: string, options?: Parameters<APIRequestContext['delete']>[1]): Promise<APIResponse> {
+    delete(path: string, options?: Parameters<APIRequestContext['delete']>[1]): Promise<APIResponse> {
         this.log.info(`HTTP DELETE ${path}`);
-        const res = await this.api.delete(path, options);
-        return res;
+        return this.api.delete(path, options);
     }
 }

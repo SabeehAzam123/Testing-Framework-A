@@ -1,8 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
 import { env } from './playwright/config/env';
+import path from 'path';
 
 export default defineConfig({
-    testDir: './playwright/e2e',
+    testDir: path.resolve(__dirname, 'playwright/e2e'),
     timeout: 30_000,
     expect: { timeout: 5_000 },
 
@@ -13,14 +14,16 @@ export default defineConfig({
     // Artifacts (folders exist; many are gitignored)
     reporter: [['html', { open: 'never' }], ['line']],
 
-    globalSetup: './playwright/support/global-setup.ts',
-    globalTeardown: './playwright/support/global-teardown.ts',
+    // ✅ Absolute paths so they work no matter which config is used
+    globalSetup: path.resolve(__dirname, 'playwright/support/global-setup.ts'),
+    globalTeardown: path.resolve(__dirname, 'playwright/support/global-teardown.ts'),
 
     use: {
         baseURL: env.UI_BASE_URL,
         trace: 'on-first-retry',
         screenshot: 'only-on-failure',
         video: 'retain-on-failure',
+        storageState: 'playwright/support/storage/state.json',
 
         // Keep downloads in your dedicated folder
         acceptDownloads: true
